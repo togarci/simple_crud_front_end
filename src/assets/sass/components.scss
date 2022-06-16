@@ -1,0 +1,88 @@
+// Button 
+button {
+    font-family: $font-default;
+    font-weight: 500;
+    height: 55px;
+    padding: 0px 40px;
+    cursor: pointer;
+}
+.button-primary {
+    color: $color-4;
+    border-radius: $border-radius-size;
+    background-color: $color-2;
+}
+
+.button-second {
+    color: $color-2;
+    background-color: $color-1;
+    border-radius: $border-radius-size;
+}
+
+// Card User
+
+.card-user {
+    background-color: $color-1;
+    font-family: $font-default;
+    border-radius: $border-radius-size;
+
+    .img-user {
+        object-fit: cover;
+        border-radius: $border-radius-size;
+        min-height: 80px;
+        min-width: 80px;
+        max-height: 80px;
+        max-width: 80px;
+    }
+
+    h6 {
+        color: $color-5;
+        font-size: 16px;
+    }
+
+    b {
+        color: $color-2;
+        font-size: 18px;
+    }
+
+    p {
+        color: $color-5;
+        font-size: 16px;
+    }
+
+    .icon {
+        height: 20px;
+        width: 20px;
+        cursor: pointer;
+    }
+}
+
+.card-user::after {
+    content: " ";
+	position: absolute;
+    background-color: $color-2;
+    width: 5px;
+    height: 20px;
+	top: 20px;
+	left: -5px;
+}
+
+// Per-Page
+.per-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: $font-default;
+    font-weight: 600;
+    height: 30px;
+    width: 30px;
+    background-color: $color-2;
+    color: $color-1;
+    border-radius: 100%;
+    text-align: center;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.active {
+    border: 4px solid $color-5;
+}
