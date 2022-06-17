@@ -78,8 +78,8 @@ export default {
 				this.$toasted.show('Sucesso ao deletar usuário').goAway(2500);
 			}).catch(() => this.$toasted.show('Erro ao deletar usuario').goAway(2500));
 		},
-		showUser() {
-
+		showUser(idUser) {
+			this.$router.push({ path: `/user/${idUser}`});
 		}
 	},
 	mounted() {

@@ -10,8 +10,9 @@ export class reqUserService {
         }).then(response => response.data);
     }
 
-    getUser() {
-
+    getUser(id) {
+        const url = `${process.env.VUE_APP_ROOT_URL}/users/${id}`;
+        return axios.get(url).then(response => response.data);
     }
 
     saveUser(data) {

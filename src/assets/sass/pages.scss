@@ -15,3 +15,25 @@
         color: $color-2;
     }
 }
+
+.details-user {
+    font-family: $font-default;
+
+    img {
+        height: 120px;
+        width: 120px;
+        border-radius: $border-radius-size;
+    }
+
+    p {
+        color: $color-5;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    b {
+        font-size: 16px;
+    }
+}
