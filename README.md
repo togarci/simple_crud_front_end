@@ -4,6 +4,8 @@
 
 Projeto em Vue.js 2 desenvolvido para ser um sistema de cadastro de usuários.
 
+**Acesse o projeto no [link](https://simple-crud-front-xvqwhkx1o-togarci.vercel.app/)**
+
 ## Proposta
 
 Este projeto e teste de vaga de desenvolvimento.
