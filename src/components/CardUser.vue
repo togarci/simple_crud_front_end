@@ -11,8 +11,8 @@
 			</div>
 			<div class="d-flex">
 				<img class="icon m-1" src="@/assets/icons/i-edit.svg" alt="Editar">
-				<img class="icon m-1" src="@/assets/icons/i-trash.svg" alt="Excluir">
-				<img class="icon m-1" src="@/assets/icons/i-show.svg" alt="Visualizar">
+				<img @click="handleDelete(id)" class="icon m-1" src="@/assets/icons/i-trash.svg" alt="Excluir">
+				<img @click="handleShow(id)" class="icon m-1" src="@/assets/icons/i-show.svg" alt="Visualizar">
 			</div>
 		</div>
 	</div>
@@ -26,6 +26,14 @@ export default {
 		name: String,
 		email: String,
 		avatarUser: String
+	},
+	methods: {
+		handleDelete(id) {
+			this.$emit('delete', id);
+		},
+		handleShow(id) {
+			this.$emit('show', id);
+		}
 	}
 }
 </script>
