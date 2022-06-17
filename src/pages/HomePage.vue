@@ -31,6 +31,7 @@
 						:avatarUser="user.avatar"
 						@delete="deleteUser"
 						@show="showUser"
+						@edit="editUser"
 					/>
 				</div>
 				
@@ -80,6 +81,12 @@ export default {
 		},
 		showUser(idUser) {
 			this.$router.push({ path: `/user/${idUser}`});
+		},
+		editUser(idUser) {
+			let user = this.listUsers.find(elem => elem.id == idUser);
+			this.$store.commit('setFormUserData', { key: 'id', value: idUser });
+			this.$store.commit('setFormUserData', { key: 'name', value: `${user.first_name} ${user.last_name}` });
+			this.createUserMode = false;
 		}
 	},
 	mounted() {

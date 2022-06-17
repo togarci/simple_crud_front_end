@@ -4,6 +4,7 @@ import VueRouter from 'vue-router';
 import routes from './routes';
 import VeeValidate from 'vee-validate';
 import Toasted from 'vue-toasted';
+import store from './store';
 
 import '@/assets/sass/main.scss';
 import 'bootstrap/scss/bootstrap.scss';
@@ -21,5 +22,6 @@ const router = new VueRouter({
 
 new Vue({
   render: h => h(App),
+  store,
   router
 }).$mount('#app')

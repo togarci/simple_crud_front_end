@@ -8,7 +8,7 @@
 				:maxlength="50"
 				:error="getError(errors, lblNameInput.name)"
                 v-validate="{ required: true }"
-				v-model="dataForm.name"
+				v-model="name"
 			/>
 		</div>
 		<div class="mt-4">
@@ -20,7 +20,7 @@
 				:listSelect="listFuncoes"
 				:error="getError(errors, lblNameInput.job)"
                 v-validate="{ required: true }"
-				v-model="dataForm.job"
+				v-model="job"
 			/>
 		</div>
 		<div class="mt-4">
@@ -40,6 +40,32 @@ export default {
 	name: 'form-user',
 	components: {
 		vInput
+	},
+	computed: {
+		id: {
+			get() {
+				return this.$store.state.formUserData.id;
+			},
+			set(value) {
+				this.$store.commit('setFormUserData', { key: 'id', value: value });
+			}
+		},
+		name: {
+			get() {
+				return this.$store.state.formUserData.name;
+			},
+			set(value) {
+				this.$store.commit('setFormUserData', { key: 'name', value: value });
+			}
+		},
+		job: {
+			get() {
+				return this.$store.state.formUserData.job;
+			},
+			set(value) {
+				this.$store.commit('setFormUserData', { key: 'job', value: value });
+			}
+		}
 	},
 	data() {
 		return {
@@ -61,10 +87,6 @@ export default {
 					value: 'UI/UX Designer'
 				},
 			],
-			dataForm: {
-				name: null,
-				job: null
-			},
 			lblNameInput: {
 				name: 'nome',
 				job: 'funcao'
@@ -75,18 +97,32 @@ export default {
 		saveUser() {
 			this.$validator.validateAll().then(isValid => {
 				if (isValid) {
-					serviceReqUser.saveUser(this.dataForm).then(() => {
-						this.dataForm.name = null;
-						this.dataForm.job = null;
-						this.$validator.reset();
-						this.$toasted.show('Sucesso ao criar usuário').goAway(2500);
-						
-					}).catch(() => this.$toasted.show('Erro ao carregar dados').goAway(2500));
+					let data = {
+						'name': this.name,
+						'job': this.job
+					}
+
+					if (this.id) {
+						serviceReqUser.putUser(this.id, data).then(() => {
+							this.successRequest();
+						})
+					} else {
+						serviceReqUser.postUser(data).then(() => {
+							this.successRequest();
+						}).catch(() => this.$toasted.show('Erro ao carregar dados').goAway(2500));
+					}
 				}
 			});
 		},
 		getError(error, fieldName) {
 			return error.first(fieldName);
+		},
+		successRequest() {
+			this.id = null;
+			this.name = null;
+			this.job = null;
+			this.$validator.reset();
+			this.$toasted.show('Sucesso ao salvar usuário').goAway(2500);
 		}
 	}
 }

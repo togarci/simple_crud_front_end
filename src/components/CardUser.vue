@@ -10,7 +10,7 @@
 				</div>
 			</div>
 			<div class="d-flex">
-				<img class="icon m-1" src="@/assets/icons/i-edit.svg" alt="Editar">
+				<img @click="handleEdit(id)" class="icon m-1" src="@/assets/icons/i-edit.svg" alt="Editar">
 				<img @click="handleDelete(id)" class="icon m-1" src="@/assets/icons/i-trash.svg" alt="Excluir">
 				<img @click="handleShow(id)" class="icon m-1" src="@/assets/icons/i-show.svg" alt="Visualizar">
 			</div>
@@ -33,6 +33,9 @@ export default {
 		},
 		handleShow(id) {
 			this.$emit('show', id);
+		},
+		handleEdit(id) {
+			this.$emit('edit', id);
 		}
 	}
 }

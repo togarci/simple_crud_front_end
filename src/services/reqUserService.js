@@ -14,10 +14,15 @@ export class reqUserService {
         const url = `${process.env.VUE_APP_ROOT_URL}/users/${id}`;
         return axios.get(url).then(response => response.data);
     }
-
-    saveUser(data) {
+    
+    postUser(data) {
         const url = `${process.env.VUE_APP_ROOT_URL}/users`;
         return axios.post(url, data).then(response => response.data);
+    }
+    
+    putUser(id, data) {
+        const url = `${process.env.VUE_APP_ROOT_URL}/users/${id}`;
+        return axios.put(url, data).then(response => response.data);
     }
     
     deleteUser(id) {
